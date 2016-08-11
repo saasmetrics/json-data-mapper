@@ -9,5 +9,16 @@
 			"newItem": "SortAs",
 			"newItem22": "GlossTerm"
 		}
-	]
+	],
+	"jsonObject": {
+		"param1": "GlossTerm",
+		"valor2": [
+			{
+				"newValor": "$.frutas[0].nome"
+			}	
+			,{
+				"newValor": "$.frutas[1].nome"
+			}	
+		 ]
+	 }
 }

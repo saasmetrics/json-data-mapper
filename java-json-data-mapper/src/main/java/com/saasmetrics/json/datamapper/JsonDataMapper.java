@@ -24,21 +24,19 @@ public class JsonDataMapper {
 		return new JsonDataMapper(new JsonTransfomer());
 	}
 
-	public String transformer(String json, String mapper) throws ParseException {		
-		JSONObject newObject = new JSONObject();	
-		transformJsonFields(json, mapper, newObject);
-		return newObject.toJSONString();
+	public String transform(String json, String mapper) throws ParseException {			
+		return transformJsonFields(json, mapper, new JSONObject()).toJSONString();
 	}
 
-	private void transformJsonFields(String json, String mapper, JSONObject newObject) {
+	private JSONObject transformJsonFields(String json, String mapper, JSONObject newObject) {
 		JSONObject objectMapper = transformJsonObject(mapper);
 		transformer.transformObject(objectMapper, json, newObject);
+		return objectMapper;
 	}
 
 	private JSONObject transformJsonObject(String jsonString) {
 		try {
-			JSONParser parser = new JSONParser(JSONParser.DEFAULT_PERMISSIVE_MODE);
-			return (JSONObject) parser.parse(jsonString);
+			return new JSONParser(JSONParser.DEFAULT_PERMISSIVE_MODE).parse(jsonString, JSONObject.class);
 		} catch (ParseException e) {
 			throw new RuntimeException(e.getMessage());
 		}

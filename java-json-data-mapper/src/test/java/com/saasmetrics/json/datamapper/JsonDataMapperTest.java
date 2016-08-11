@@ -3,19 +3,23 @@ package com.saasmetrics.json.datamapper;
 import org.junit.Assert;
 import org.junit.Test;
 
-import com.saasmetrics.json.datamapper.util.FileUtils;
+import static com.saasmetrics.json.datamapper.util.FileUtils.readFile;
 
 
 public class JsonDataMapperTest {
 
 	@Test
 	public void shouldTransformJson() throws Exception{
-		String mapper = FileUtils.readFile("C:/Users/pagui/Documents/git/json-data-mapper/java-json-data-mapper/bin/mappers/sample-data-mapper.json");
-		String json = FileUtils.readFile("C:/Users/pagui/Documents/git/json-data-mapper/java-json-data-mapper/bin/jsons/sample-json.json");
+		String basePath = "C:/Users/pagui/Documents/git/json-data-mapper/java-json-data-mapper/bin";
+		
+		String mapper = readFile(basePath + "/mappers/sample-data-mapper.json");
+		String json = readFile(basePath + "/jsons/sample-json.json");
+		String result = readFile(basePath + "/jsons/json-file-result.json");
+		
 		JsonDataMapper dataMapper =  JsonDataMapper.getInstance();
-		String  newJson = dataMapper.transformer(json, mapper);
+		String  newJson = dataMapper.transform(json, mapper);
 		System.out.println(newJson);
-		Assert.assertTrue("{\"GlossTerm\":\"Standard Generalized Markup Language\",\"SortAs\":\"SGML\",\"NewAcronym\":\"SGML\",\"Abbrev2\":\"ISO 8879:1986\",\"Abbrev\":\"ISO 8879:1986\"}".equals(newJson));
+		Assert.assertTrue(result.equals(newJson));
 	}
 	
 }

@@ -2,5 +2,18 @@
 	"SortAs": "SGML",
 	"GlossTerm": "Standard Generalized Markup Language",
 	"Acronym": "SGML",
-	"Abbrev": "ISO 8879:1986"
+	"Abbrev": "ISO 8879:1986",
+	"valoDentroArray": "555555",
+	"newObject": {
+		"valor": "20055"
+	},
+	"frutas": [
+		{
+			"nome": "banana"
+		},
+		{
+			"nome": "maca"
+		}
+	]
 }
+

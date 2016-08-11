@@ -14,7 +14,12 @@ public class JsonTransfomer implements Transfomer {
 		objectMapper.entrySet().forEach(entry -> {
 			if(entry.getValue().getClass().equals(JSONArray.class)){
 				transformArray((JSONArray) entry.getValue(), entry.getKey(), objectMapper, newObject, json);
-			}else{
+			}else if(entry.getValue().getClass().equals(JSONObject.class)){
+				JSONObject jsonObject = new JSONObject();
+				newObject.put(entry.getKey(), jsonObject);
+				transformObject((JSONObject) entry.getValue(), json, jsonObject );
+			}
+			else{
 				transform(entry, newObject, json);
 			}
 		});
