@@ -1,7 +1,13 @@
 {
-  	"SortAs": "SortAs",
+	"SortAs": "SortAs",
 	"GlossTerm": "GlossTerm",
 	"NewAcronym": "Acronym",
 	"Abbrev": "Abbrev",
-	"Abbrev2": "Abbrev"
+	"Abbrev2": "Abbrev",
+	"jsonArray": [
+		{
+			"newItem": "SortAs",
+			"newItem22": "GlossTerm"
+		}
+	]
 }
